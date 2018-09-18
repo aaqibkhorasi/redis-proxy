@@ -1,0 +1,14 @@
+.......
+----------------------------------------------------------------------
+Ran 7 tests in 12.360s
+
+OK
+hey in setUp
+hey in setUp
+{'hello': 'success'}
+{'key': 'hello', 'value': 'world'}
+hey in setUp
+hey in setUp
+hey in setUp
+hey in setUp
+hey in setUp

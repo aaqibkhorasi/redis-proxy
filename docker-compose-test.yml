@@ -1,0 +1,62 @@
+# docker-compose.yml
+version: '3'
+
+services:
+
+  redis:
+    image: redis
+    container_name: cache
+    expose:
+    - 6379
+    ports:
+    - "6379:6379"
+
+  app:
+    build: ./
+    container_name: app
+    volumes:
+    - ./:/opt/proxy
+    ports:
+    - "5000:5000"
+    links:
+    - redis
+    environment:
+    - DB_HOST=cache
+    - DB_PORT=6379
+    - CACHE_EXPIRY=60
+    - CACHE_SIZE="2"
+    - MAX_CONNECTION=3
+
+  worker:
+    build:
+      context: ./
+      dockerfile: Dockerfile-Worker
+    container_name: worker
+    volumes:
+    - ./:/opt/proxy
+    links:
+    - redis
+    environment:
+    - DB_HOST=cache
+    - DB_PORT=6379
+
+  test:
+    build:
+      context: ./
+      dockerfile: Dockerfile-test
+    container_name: testContainer
+    volumes:
+    - ./:/opt/proxy
+    links:
+    - redis
+    - app
+    environment:
+    - DB_HOST=cache
+    - DB_PORT=6379
+    - CACHE_EXPIRY=60
+    - CACHE_SIZE=2
+    - MAX_CONNECTION=3
+    tty: true
+    stdin_open: true
+    entrypoint:
+    - bash
