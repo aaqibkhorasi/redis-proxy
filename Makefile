@@ -11,3 +11,9 @@ app:
 
 stop:
 	docker-compose down
+
+clean: 
+	docker rm cache || true
+	docker rm app || true
+	docker rm worker || true
+	docker rm testContainer || true
