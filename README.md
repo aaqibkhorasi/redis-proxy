@@ -69,6 +69,8 @@ Instructions on how to Run:
 - `make test` To spin up the application stack, run the tests, stops application stack
 - `make app` Spin up application stack
 - `make stop` Stop the application stack
+- `make clean` clean all the docker containers
+
 
 Time Spent:
 
