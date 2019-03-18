@@ -72,21 +72,6 @@ Instructions on how to Run:
 - `make clean` clean all the docker containers
 
 
-Time Spent:
-
-Total time = ~5-6 hours
-
-Requirement Analysis (Understanding Project, Finding best available frameworks, etc): ~1hr
-
-Setting up Redis, Cached Get, Global Expiry: ~45mins
-lru eviction : ~1hr
-
-Sequential Concurrent Processing + Testing: ~45mins
-
-Manual + Unit Tests + System Test : 1hr
-Docker Image : ~ 1.5hr 
-
-
 
 Feature that's not included:
 
